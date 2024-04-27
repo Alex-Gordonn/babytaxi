@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/login.vue'
-import pending_users from '../views/pending_users.vue'
+import users from '../views/users.vue'
+import cabby_info from '../views/cabby_info.vue';
+import pending_cabbies from '../views/pending_cabbies.vue';
 
 const routes = [
     {
@@ -9,11 +11,24 @@ const routes = [
       component: Login
     },
     {
-      path: '/pending_users',
-      name: 'pending_users',
-      component: pending_users,
+      path: '/users',
+      name: 'users',
+      component: users,
       meta: { requiresAuth: true }
     },
+    {
+      path: '/cabby_info',
+      name: 'cabby_info',
+      component: cabby_info,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/pending_cabbies',
+      name: 'pending_cabbies',
+      component: pending_cabbies,
+      meta: { requiresAuth: true }
+    },
+
 ]
 
 const router = createRouter({

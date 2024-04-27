@@ -24,9 +24,6 @@ return {
       };
     },
     methods: {
-      goToSmsSend() {
-        this.$router.push({ name: 'pending_users' });
-      },
       async submitForm() {
         const data = {
           email: this.email,
@@ -41,7 +38,7 @@ return {
           });
           if (response.data && response.data.access) {
             localStorage.setItem('authToken', response.data.access);
-            this.router.push('/employees');
+            this.router.push('/pending_users');
           } else {
             console.error('Токен аутентификации не получен');
             alert('Не правильно!')
@@ -60,7 +57,7 @@ return {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #f7f7f7;
+    background-color: #FFB800;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
