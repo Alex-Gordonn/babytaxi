@@ -18,6 +18,8 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Phone Number</th>
+                <th>Email</th>
+                <th>Last login</th>
                 <th>Is Active</th>
                 <th>Actions</th>
             </tr>
@@ -28,6 +30,8 @@
                 <td>{{ user.first_name }}</td>
                 <td>{{ user.last_name }}</td>
                 <td>{{ user.phone_number }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ formatDateString(user.last_login) }}</td>
                 <td>{{ user.is_active }}</td>
                 <td>
                     <button @click="activateUser(user.id)" v-if="!user.is_active">Activate</button>
@@ -100,7 +104,17 @@ export default {
             } catch (error) {
                 console.error("error deactivating user", error);
             }
-        }
+        },
+        formatDateString(dateString) {
+                const date = new Date(dateString);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+
+                return `${year}-${month}-${day} ${hours}:${minutes}`;
+    },
         }
 }
 </script>
@@ -157,7 +171,7 @@ nav ul {
 }
 
 nav li {
-    margin-right: 20px; /* Отступ между элементами */
+    margin-left: 20px
 }
 
 nav li:last-child {
@@ -179,7 +193,6 @@ nav a img {
 .logo {
     width: 95px;
     height: 30px;
-    
 }
 
 a img {

@@ -38,7 +38,7 @@ return {
           });
           if (response.data && response.data.access) {
             localStorage.setItem('authToken', response.data.access);
-            this.router.push('/pending_users');
+            this.router.push('/users');
           } else {
             console.error('Токен аутентификации не получен');
             alert('Не правильно!')
