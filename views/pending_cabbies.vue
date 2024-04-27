@@ -87,7 +87,7 @@ export default {
                     is_active: true
                 }
             });
-            this.fetchUsers(); // Обновляем список пользователей после изменения
+            this.fetchUsers();
         } catch (error) {
             console.error("error activating user", error);
         }
@@ -100,7 +100,7 @@ export default {
                         is_active: false
                     }
                 });
-                this.fetchUsers(); // Обновляем список пользователей после изменения
+                this.fetchUsers();
             } catch (error) {
                 console.error("error deactivating user", error);
             }

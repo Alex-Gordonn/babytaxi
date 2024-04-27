@@ -43,8 +43,9 @@
 </template>
 
 <script>
+//chrome.exe --user-data-dir="C://chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials
+
 import axios from './axios';
-import { format, parseISO } from 'date-fns';
 
 export default {
     data() {
@@ -86,7 +87,7 @@ export default {
                     is_active: true
                 }
             });
-            this.fetchUsers(); // Обновляем список пользователей после изменения
+            this.fetchUsers();
         } catch (error) {
             console.error("error activating user", error);
         }
@@ -99,7 +100,7 @@ export default {
                     is_active: false
                 }
             });
-            this.fetchUsers(); // Обновляем список пользователей после изменения
+            this.fetchUsers();
         } catch (error) {
             console.error("error deactivating user", error);
         }
