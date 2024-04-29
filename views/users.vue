@@ -71,7 +71,7 @@ export default {
                     Headers: {
                         'Content-type': 'appliction/json',
                     }});
-                    this.users = response.data.filter(user => user.type === 1)
+                    this.users = response.data.filter(user => user.type === 1 && !user.is_superuser);
             }catch(error) {
                 console.error("error")
             }
