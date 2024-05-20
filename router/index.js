@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../views/login.vue'
+import login from '../views/login.vue'
 import users from '../views/users.vue'
 import pending_cabbies from '../views/pending_cabbies.vue';
+import home from '../views/home.vue'
 
 const routes = [
     {
-      path: '/',
-      name: 'Login',
-      component: Login
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/users',
@@ -21,6 +22,12 @@ const routes = [
       component: pending_cabbies,
       meta: { requiresAuth: true }
     },
+    {
+      path: '/',
+      name: 'home',
+      component: home,
+    },
+    
 
 ]
 
