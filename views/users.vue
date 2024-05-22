@@ -1,10 +1,10 @@
 <template>
-    <header>
+<header>
     <nav>
-        <img class="logo" src="../src/assets/logo.png" alt="Company Logo">
+        <a class="logo"ref="#">BabyTaxi</a>
         <ul>
             <li @click="goToUsers" class="choosed"><a><img src="../src/assets/pending_users.png" alt="Pending Users">Users</a></li>
-            <li @click="goToPendingCabbies"><a><img src="../src/assets/pending_cabbies.png" alt="Pending Cabbies">Pending Cabbies</a></li>
+            <li @click="goToCabbies"><a><img src="../src/assets/pending_cabbies.png" alt="Pending Cabbies">Cabbies</a></li>
             <li class="logout" @click="logout"><a>Log Out</a></li>
         </ul>
     </nav>
@@ -57,8 +57,8 @@ export default {
         this.fetchUsers();
     },
     methods: {
-        goToPendingCabbies() {
-            this.$router.push({ name: 'pending_cabbies' });
+        goToCabbies() {
+            this.$router.push({ name: 'cabbies' });
         },
         async logout() {
             this.$root.logout();
@@ -191,9 +191,9 @@ nav a img {
 }
 
 .logo {
-    width: 95px;
-    height: 30px;
-
+    color: #FFB800;
+    font-size: 20px;
+    margin-right: 20px;
 }
 
 a img {

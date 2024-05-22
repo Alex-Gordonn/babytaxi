@@ -1,10 +1,10 @@
 <template>
-    <header>
+<header>
     <nav>
-        <img class="logo" src="../src/assets/logo.png" alt="Company Logo">
+        <a class="logo"ref="#">BabyTaxi</a>
         <ul>
             <li @click="goToUsers"><a><img src="../src/assets/pending_users.png" alt="Pending Users">Users</a></li>
-            <li @click="goToPendingCabbies" class="choosed"><a><img src="../src/assets/pending_cabbies.png" alt="Pending Cabbies">Pending Cabbies</a></li>
+            <li @click="goToCabbies" class="choosed"><a><img src="../src/assets/pending_cabbies.png" alt="Pending Cabbies">Cabbies</a></li>
             <li class="logout" @click="logout"><a>Log Out</a></li>
         </ul>
     </nav>
@@ -15,11 +15,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Full Name</th>
                 <th>Phone Number</th>
-                <th>Email</th>
-                <th>Last login</th>
                 <th>Is Active</th>
                 <th>Actions</th>
             </tr>
@@ -27,15 +24,11 @@
         <tbody>
             <tr v-for="user in users" :key="user.id">
                 <td>{{ user.id }}</td>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
+                <td>{{ user.full_name }}</td>
                 <td>{{ user.phone_number }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ formatDateString(user.last_login) }}</td>
                 <td>{{ user.is_active }}</td>
                 <td>
-                    <button @click="activateUser(user.id)" v-if="!user.is_active">Activate</button>
-                    <button @click="deactivateUser(user.id)" v-if="user.is_active">Deactivate</button>
+                    <button @click="openCabbie(user.id)">Take to work</button>
                 </td>
             </tr>
         </tbody>
@@ -54,8 +47,8 @@ export default {
         this.fetchUsers();
     },
     methods: {
-        goToPendingCabbies() {
-            this.$router.push({ name: 'pending_cabbies' });
+        goToCabbies() {
+            this.$router.push({ name: 'cabbies' });
         },
         goToUsers() {
             this.$router.push({ name: 'users' });
@@ -67,7 +60,7 @@ export default {
         },
         async fetchUsers() {
             try {
-                const response = await axios.get('users/', {
+                const response = await axios.get('cabbie/', {
                     Headers: {
                         'Content-type': 'appliction/json',
                     }});
@@ -76,45 +69,9 @@ export default {
                 console.error("error")
             }
         },
-        async openCabby(cabbyId) {
-            this.$router.push({ name: 'user_info', query: { id: cabbyId } });
+        async openCabbie(cabbieId) {
+            this.$router.push({ name: 'cabbie', query: { id: cabbieId } });
         },
-        async activateUser(userId) {
-        try {
-            const response = await axios.put(`https://baby-taxi.xyz/api/cabbie/is-active/`, null, {
-                params: {
-                    user_id: userId,
-                    is_active: true
-                }
-            });
-            this.fetchUsers();
-        } catch (error) {
-            console.error("error activating user", error);
-        }
-        },
-        async deactivateUser(userId) {
-            try {
-                const response = await axios.put(`https://baby-taxi.xyz/api/cabbie/is-active/`, null, {
-                    params: {
-                        user_id: userId,
-                        is_active: false
-                    }
-                });
-                this.fetchUsers();
-            } catch (error) {
-                console.error("error deactivating user", error);
-            }
-        },
-        formatDateString(dateString) {
-                const date = new Date(dateString);
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
-
-                return `${year}-${month}-${day} ${hours}:${minutes}`;
-    },
         }
 }
 </script>
@@ -191,8 +148,9 @@ nav a img {
 }
 
 .logo {
-    width: 95px;
-    height: 30px;
+    color: #FFB800;
+    font-size: 20px;
+    margin-right: 20px;
 }
 
 a img {
