@@ -53,7 +53,7 @@
           </tbody>
         </table>
         <div v-else class="no-results">
-          <p>Ничего не найдено</p>
+          <p>Nothing found</p>
         </div>
       </div>
     </div>
@@ -309,7 +309,7 @@
     color: white;
   }
   .search-button {
-    background-color: #27AE60;
+    background-color: #FFB800;
     color: white;
   }
   .no-results {

@@ -40,13 +40,13 @@
               <td>{{ user.is_active }}</td>
               <td>
                     <button @click="activateUser(user.id)" v-if="!user.is_active">Activate</button>
-                    <button @click="deactivateUser(user.id)" v-if="user.is_active">Deactivate</button>
+                    <button @click="deactivateUser(user.id)" v-if="user.is_active" class="active-button">Deactivate</button>
                 </td>
             </tr>
           </tbody>
         </table>
         <div v-else class="no-results">
-          <p>Ничего не найдено</p>
+          <p>Nothing found</p>
         </div>
       </div>
     </div>
@@ -54,7 +54,6 @@
   </template>
   
   <script>
-  //chrome.exe --user-data-dir="C://chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials
   import axios from './axios';
   export default {
     data() {
@@ -70,7 +69,6 @@
       filteredUsers() {
         let users = this.users;
 
-  
         if (this.searchFirstName) {
           users = users.filter(user =>
             user.first_name.toLowerCase().includes(this.searchFirstName.toLowerCase())
@@ -155,6 +153,9 @@
   </script>
   
   <style>
+  ul li {
+    cursor: pointer;
+  }
   .table_user {
     width: 90%;
     border-collapse: collapse;
@@ -327,7 +328,7 @@
     color: white;
   }
   .search-button {
-    background-color: #27AE60;
+    background-color: #FFB800;
     color: white;
   }
   .no-results {
@@ -339,8 +340,11 @@
   .table_user button {
     padding: 8px;
     border: none;
-    background-color: #F67272;
+    background-color: #FFB800;
     color: white;
     border-radius: 8px;
+  }
+  .table_user .active-button {
+    background-color: #F67272;
   }
   </style>

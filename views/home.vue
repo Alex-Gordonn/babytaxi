@@ -62,8 +62,10 @@
           <h2>{{ steps[currentStep].title }}</h2>
           <p>{{ steps[currentStep].content }}</p>
         </div>
-        <button @click="prevStep">←</button>
-        <button @click="nextStep">→</button>
+        <div class="left_right">
+        <button @click="prevStep"><img src="../src/assets/left.png" alt=""></button>
+        <button @click="nextStep"><img src="../src/assets/right.png" alt=""></button>
+        </div>
       </div>
     </div>
   </div>
@@ -451,10 +453,17 @@ body {
     background-color: #B5B5B5;
     border: none;
     margin-right: 20px;
+    padding: 8px;
+    width: 100px;
+    color: white;
+
   }
   .order {
     background-color: #FFB800;
     border: none;
+    width: 100px;
+    padding: 8px;
+    color: white;
   }
   .get {
     margin-top: 100px;
@@ -479,6 +488,7 @@ body {
     width: 100%;
     height: 100px;
     margin-top: 10px;
+    border-radius: 5px;
   }
   .buttons {
     text-align: right;
@@ -488,11 +498,15 @@ body {
     border: none;
     margin-right: 20px;
     width: 100px;
+    padding: 8px;
   }
   .send {
     background-color: #8A8A8A;
     border: none;
     width: 100px;
+    padding: 8px;
+    border-radius: 10px;
+    color: white;
   }
   .address {
     margin-left: 180px;
@@ -525,5 +539,9 @@ body {
   }
   .selected {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.left_right img{
+  width: 40px;
+  height: 40px;
 }
 </style>

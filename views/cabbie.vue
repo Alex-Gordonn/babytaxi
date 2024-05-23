@@ -44,9 +44,9 @@
 
   
         <div class="buttons">
-            <button @click="goToCabbies" class="back-button">Назад</button>
-          <button @click="approveUser" class="approve-button">Одобрить</button>
-          <button @click="goToCabbies" class="reject-button">Отказать</button>
+            <button @click="goToCabbies" class="back-button">Cancel</button>
+          <button @click="approveUser" class="approve-button">Approve</button>
+          <button @click="goToCabbies" class="reject-button">Refuse</button>
         </div>
       </div>
     </div>
