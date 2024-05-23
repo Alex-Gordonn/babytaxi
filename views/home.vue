@@ -281,6 +281,9 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: white;
+}
   .navbar {
     position: -webkit-sticky;
     position: sticky;
@@ -301,6 +304,7 @@ export default {
     border-radius: 25px;
     padding-right: 20px;
     padding-left: 20px;
+    margin-top: 10px;
   }
   .text {
     color: #ffb800;
